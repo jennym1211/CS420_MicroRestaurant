@@ -17,3 +17,4 @@ E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaura
 E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\obj\Debug\netcoreapp3.1\MicroRestaurant.dll
 E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\obj\Debug\netcoreapp3.1\MicroRestaurant.pdb
 E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\obj\Debug\netcoreapp3.1\MicroRestaurant.genruntimeconfig.cache
+E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\obj\Debug\netcoreapp3.1\MicroRestaurant.csprojAssemblyReference.cache
