@@ -1,7 +1,6 @@
 E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\bin\Debug\netcoreapp3.1\appsettings.Development.json
 E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\bin\Debug\netcoreapp3.1\appsettings.json
 E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
-E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\obj\Debug\netcoreapp3.1\MicroRestaurant.csprojAssemblyReference.cache
 E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\obj\Debug\netcoreapp3.1\MicroRestaurant.AssemblyInfoInputs.cache
 E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\obj\Debug\netcoreapp3.1\MicroRestaurant.AssemblyInfo.cs
 E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\obj\Debug\netcoreapp3.1\MicroRestaurant.RazorTargetAssemblyInfo.cache
