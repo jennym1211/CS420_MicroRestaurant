@@ -3,9 +3,9 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>9e69512b-cc25-46c0-9edd-eefa4c1b1dfe</ProjectGuid>
+    <ProjectGuid>bc3a5b25-df6e-4bd7-ae29-3c6790121709</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
-    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/weatherforecast</DockerServiceUrl>
+    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}</DockerServiceUrl>
     <DockerServiceName>microrestaurant</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
