@@ -15,7 +15,9 @@ namespace MicroRestaurant.Models
 
         public decimal? OrderTotal { get; set; }
 
+        public string OrderStatus { get; set; }
+
         // [InverseProperty("Order")]
-        public List<MenuItem> OrderItems { get; set; } = new List<MenuItem>();
+        public List<Plate> Plates { get; set; } = new List<Plate>();
     }
 }

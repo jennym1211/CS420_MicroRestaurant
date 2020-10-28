@@ -9,7 +9,7 @@ namespace MicroRestaurant.Models.Events
 {
     public class TableReadyEvent
     {
-        public int HostId { get; set; }
+        public int WaiterId { get; set; }
 
         [ForeignKey("HostId")]
         public Host Host { get; set; }

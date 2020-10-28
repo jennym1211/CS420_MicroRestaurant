@@ -17,5 +17,7 @@ namespace MicroRestaurant.Models
 
         public bool IsAvailable { get; set; }
         public bool IsClean { get; set; }
+
+        public int NumOfCustomers { get; set; }
     }
 }
