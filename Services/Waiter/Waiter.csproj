@@ -5,4 +5,8 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\MicroRestaurant</DockerfileContext>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\MicroRestaurantDTO\MicroRestaurantDTO.csproj" />
+  </ItemGroup>
 </Project>

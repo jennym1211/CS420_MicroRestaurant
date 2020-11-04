@@ -9,16 +9,20 @@ namespace Hostess.Events.ConsumeEvents
 {
     public class TableReadyEvent
     {
-        public int CustomerId { get; set; }
+        public Table Table { get; set; }
 
-        [ForeignKey("CustomerId")]
-        public Customer Customer { get; set; }
+        public Reservation Reservation { get; set; }
 
         public int TableId { get; set; }
 
-        [ForeignKey("TableId")]
-        public Table Table { get; set; }
+        public int ReservationId { get; set; }
 
         public DateTime TimeStamp { get; set; }
+
+        public TableReadyEvent(List<int> TablesInUse, List<int> CurrentReservations)
+        {
+            TablesInUse.Add(TableId);
+            CurrentReservations.Remove(ReservationId);
+        }
     }
 }
