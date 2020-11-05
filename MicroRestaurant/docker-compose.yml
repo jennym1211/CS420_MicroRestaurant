@@ -6,3 +6,33 @@ services:
     build:
       context: .
       dockerfile: MicroRestaurant/Dockerfile
+  bartender:
+    image: ${DOCKER_REGISTRY-}bartender
+    build:
+      context: .
+      dockerfile: Bartender/Dockerfile
+
+  busboy:
+    image: ${DOCKER_REGISTRY-}busboy
+    build:
+      context: .
+      dockerfile: BusBoy/Dockerfile
+
+
+  kitchen:
+    image: ${DOCKER_REGISTRY-}kitchen
+    build:
+      context: .
+      dockerfile: Kitchen/Dockerfile
+
+  hostess:
+    image: ${DOCKER_REGISTRY-}hostess
+    build:
+      context: .
+      dockerfile: Hostess/Dockerfile
+
+  waiter:
+    image: ${DOCKER_REGISTRY-}waiter
+    build:
+      context: .
+      dockerfile: Waiter/Dockerfile

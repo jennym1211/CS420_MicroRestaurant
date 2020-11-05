@@ -1,12 +1,13 @@
 E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\bin\Debug\netcoreapp3.1\appsettings.Development.json
 E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\bin\Debug\netcoreapp3.1\appsettings.json
 E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\bin\Debug\netcoreapp3.1\MicroRestaurant.exe
+E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\obj\Debug\netcoreapp3.1\MicroRestaurant.csprojAssemblyReference.cache
 E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\obj\Debug\netcoreapp3.1\MicroRestaurant.AssemblyInfoInputs.cache
 E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\obj\Debug\netcoreapp3.1\MicroRestaurant.AssemblyInfo.cs
 E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\obj\Debug\netcoreapp3.1\MicroRestaurant.RazorTargetAssemblyInfo.cache
 E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\obj\Debug\netcoreapp3.1\staticwebassets\MicroRestaurant.StaticWebAssets.Manifest.cache
 E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\obj\Debug\netcoreapp3.1\staticwebassets\MicroRestaurant.StaticWebAssets.xml
-E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\bin\Debug\netcoreapp3.1\MicroRestaurant.exe
 E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\bin\Debug\netcoreapp3.1\MicroRestaurant.deps.json
 E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\bin\Debug\netcoreapp3.1\MicroRestaurant.runtimeconfig.json
 E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\bin\Debug\netcoreapp3.1\MicroRestaurant.runtimeconfig.dev.json
@@ -17,4 +18,3 @@ E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaura
 E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\obj\Debug\netcoreapp3.1\MicroRestaurant.dll
 E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\obj\Debug\netcoreapp3.1\MicroRestaurant.pdb
 E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\obj\Debug\netcoreapp3.1\MicroRestaurant.genruntimeconfig.cache
-E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\obj\Debug\netcoreapp3.1\MicroRestaurant.csprojAssemblyReference.cache
