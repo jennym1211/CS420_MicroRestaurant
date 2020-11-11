@@ -1,10 +1,11 @@
 ﻿using MicroRestaurantDTO.Models;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Bartender.Events.ConsumeEvents
+namespace Kitchen.Events.ConsumeEvents
 {
     public class OrderTakenEvent
     {

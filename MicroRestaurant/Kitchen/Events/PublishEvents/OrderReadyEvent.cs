@@ -4,15 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Bartender.Events.ConsumeEvents
+namespace Kitchen.Events.PublishEvents
 {
-    public class OrderTakenEvent
+    public class OrderReadyEvent
     {
         public Order Order { get; set; }
 
         public int OrderId { get; set; }
-
-        public IEnumerable<MenuItem> OrderItems { get; set; }
 
         public DateTime TimeStamp { get; set; }
     }
