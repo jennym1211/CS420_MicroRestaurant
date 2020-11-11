@@ -16,12 +16,5 @@ namespace Waiter.Events.PublishEvents
         public IEnumerable<MenuItem> OrderItems { get; set; }
 
         public DateTime TimeStamp { get; set; }
-
-        public OrderTakenEvent(int orderId, IEnumerable<MenuItem> orderItems)
-        {
-            OrderId = orderId;
-
-            OrderItems = orderItems;
-        }
     }
 }

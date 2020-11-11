@@ -11,17 +11,8 @@ namespace Waiter.Events.ConsumeEvents
     {
         public Order Order { get; set; }
 
-        public Table Table { get; set; }
-
         public int OrderId { get; set; }
-        public int TableId { get; set; }
 
         public DateTime TimeStamp { get; set; }
-
-        public OrderReadyEvent(int orderId, int tableId)
-        {
-            OrderId = orderId;
-            TableId = tableId;
-        }
     }
 }

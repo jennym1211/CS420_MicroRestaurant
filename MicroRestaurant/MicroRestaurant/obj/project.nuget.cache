@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "WK2VJkfPLEu3RDopWOTMGWc1NAT5Z5950GT3mxsNCHQ5lRXZlDNKcaopluK8o4Q/8dQkkLHdP659f2zgDr08tA==",
+  "dgSpecHash": "sK/7UytzcWJ+vBSGFWzVJgCEncBsUTsNsvIg8mMbDastQgb38oj7L76db/0GLDijhjAnWH40zJDtlMa6jgyH5w==",
   "success": true,
   "projectFilePath": "E:\\Jennifer\\Documents\\GitHub\\CS420_MicroRestaurant\\MicroRestaurant\\MicroRestaurant\\MicroRestaurant.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Jennifer\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512"
+    "C:\\Users\\Jennifer\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512",
+    "C:\\Users\\Jennifer\\.nuget\\packages\\rabbitmq.client\\6.2.1\\rabbitmq.client.6.2.1.nupkg.sha512",
+    "C:\\Users\\Jennifer\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Users\\Jennifer\\.nuget\\packages\\system.threading.channels\\4.7.1\\system.threading.channels.4.7.1.nupkg.sha512"
   ],
   "logs": []
 }
