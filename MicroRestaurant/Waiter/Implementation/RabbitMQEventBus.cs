@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using RabbitMQ.Client.Events;
 
 namespace Waiter.Implementation
 {
@@ -39,6 +40,37 @@ namespace Waiter.Implementation
                                      routingKey: queueName,
                                      basicProperties: null,
                                      body: body);
+            }
+        }
+
+        public T ConsumeEvent<T>(String queueName)
+        {
+            var factory = new ConnectionFactory() { HostName = "host.docker.internal" };
+            using (var connection = factory.CreateConnection())
+            using (var channel = connection.CreateModel())
+            {
+                channel.QueueDeclare(queue: queueName,
+                                     durable: true,
+                                     exclusive: false,
+                                     autoDelete: false,
+                                     arguments: null);
+
+                var consumer = new EventingBasicConsumer(channel);
+                consumer.Received += (model, ea) =>
+                {
+                    var body = ea.Body.ToArray();
+                    var message = Encoding.UTF8.GetString(body);
+                    Console.WriteLine(" [x] Received {0}", message);
+                };
+                var t = channel.BasicConsume(queue: queueName,
+                                      autoAck: true,
+                                      consumer: consumer);
+
+                var o = JsonSerializer.Deserialize<T>(t);
+
+                return o;
+                //Console.WriteLine(" Press [enter] to exit.");
+                //Console.ReadLine();
             }
         }
     }

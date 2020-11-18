@@ -7,6 +7,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Bartender.Interfaces;
 using RabbitMQ.Client.Events;
+using System.Threading.Channels;
 
 namespace Bartender.Implementation
 {
@@ -43,13 +44,13 @@ namespace Bartender.Implementation
             }
         }
 
-        public void ConsumeEvent<T>()
+        public T ConsumeEvent<T>(string queueName)
         {
             var factory = new ConnectionFactory() { HostName = "host.docker.internal" };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
-                channel.QueueDeclare(queue: "table",
+                channel.QueueDeclare(queue: queueName,
                                      durable: true,
                                      exclusive: false,
                                      autoDelete: false,
@@ -62,12 +63,16 @@ namespace Bartender.Implementation
                     var message = Encoding.UTF8.GetString(body);
                     Console.WriteLine(" [x] Received {0}", message);
                 };
-                channel.BasicConsume(queue: "table",
-                                     autoAck: true,
-                                     consumer: consumer);
+                var t = channel.BasicConsume(queue: queueName,
+                                      autoAck: true,
+                                      consumer: consumer);
 
-                Console.WriteLine(" Press [enter] to exit.");
-                Console.ReadLine();
+                var o = JsonSerializer.Deserialize<T>(t);
+
+                return o;
+                //Console.WriteLine(" Press [enter] to exit.");
+                //Console.ReadLine();
             }
         }
     }
+}

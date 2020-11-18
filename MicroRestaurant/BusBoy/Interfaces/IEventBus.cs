@@ -11,5 +11,7 @@ namespace BusBoy.Interfaces
         String HostName { get; set; }
 
         void PublishEvent<T>(String queueName, T e);
+
+        T ConsumeEvent<T>(String queueName);
     }
 }

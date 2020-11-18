@@ -10,10 +10,15 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
+public static class queues
+{
+    public const string seatedtable = "seatedtable";
+}
+
 namespace Hostess.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    //[ApiController]
     public class HostessController : ControllerBase
     {
         IConfiguration _configuration;
@@ -27,25 +32,35 @@ namespace Hostess.Controllers
             eventBus.PortNumber = Convert.ToInt32(_configuration["rabbitmqport"]);
         }
 
-        [HttpPost]
-        public ActionResult SeatToTable([FromBody] Table table, int tableID)
+        [HttpGet]
+        public ActionResult TableReady()
         {
-            SeatedTableEvent ste = new SeatedTableEvent();
-            ste.Table = table;
-            ste.Table.Id = tableID;
-            ste.TimeStamp = DateTime.Now;
+            var tre = _eventBus.ConsumeEvent<TableReadyEvent>("tableready");
 
-            _eventBus.PublishEvent<SeatedTableEvent>("seatedtable", ste);
+            return new JsonResult(tre);
+        }
+
+        [HttpGet]
+        public ActionResult SeatedTable()
+        {
+            var ste = _eventBus.ConsumeEvent<SeatedTableEvent>("seatedtable");
 
             return new JsonResult(ste);
         }
 
         [HttpPost]
-        public ActionResult TakeReservation([FromBody] Table table, int TableId)
+        public ActionResult SeatToTable([FromBody] SeatedTableEvent ste)
         {
-            ReservationTakenEvent rte = new ReservationTakenEvent();
-            rte.Table = table;
-            rte.TableId = TableId;
+            ste.TimeStamp = DateTime.Now;
+
+            _eventBus.PublishEvent<SeatedTableEvent>(queues.seatedtable, ste);
+
+            return new JsonResult(ste);
+        }
+
+        [HttpPost]
+        public ActionResult TakeReservation([FromBody] ReservationTakenEvent rte)
+        {
             rte.TimeStamp = DateTime.Now;
 
             _eventBus.PublishEvent<ReservationTakenEvent>("reservationtaken", rte);

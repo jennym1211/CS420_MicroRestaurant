@@ -12,7 +12,7 @@ using Microsoft.Extensions.Configuration;
 namespace BusBoy.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    //[ApiController]
     public class BusBoyController : ControllerBase
     {
         IConfiguration _configuration;
@@ -31,16 +31,12 @@ namespace BusBoy.Controllers
             throw new NotImplementedException();
         }
 
-        public ActionResult CleanTable([FromBody] Table table, int tableId, List<Table> TablesInUse)
+        public ActionResult CleanTable([FromBody] TableReadyEvent tre)
         {
-            TableReadyEvent tre = new TableReadyEvent
-            {
-                Table = table,
-                TableId = tableId
-            };
-            TablesInUse.Add(table);
+            tre.TimeStamp = DateTime.Now;
+            //TablesInUse.Add(table);
 
-            _eventBus.PublishEvent<TableReadyEvent>("drinkready", tre);
+            _eventBus.PublishEvent("tableready", tre);
 
             return new JsonResult(tre);
         }

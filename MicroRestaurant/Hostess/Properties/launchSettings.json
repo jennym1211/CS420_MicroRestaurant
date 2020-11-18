@@ -20,7 +20,7 @@
     "Hostess": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
+      "launchUrl": "hostess",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

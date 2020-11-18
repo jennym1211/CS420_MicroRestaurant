@@ -1,11 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "sK/7UytzcWJ+vBSGFWzVJgCEncBsUTsNsvIg8mMbDastQgb38oj7L76db/0GLDijhjAnWH40zJDtlMa6jgyH5w==",
+  "dgSpecHash": "U6q+FFiroC3xV95YY3mseZSwQBxZDeK0xwdrzFwzgW8jbDfEorC9KxwqwtOLpzzNZFLQ/tPSHvwXKKuITbtedg==",
   "success": true,
   "projectFilePath": "E:\\Jennifer\\Documents\\GitHub\\CS420_MicroRestaurant\\MicroRestaurant\\MicroRestaurant\\MicroRestaurant.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Jennifer\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\Jennifer\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512",
     "C:\\Users\\Jennifer\\.nuget\\packages\\rabbitmq.client\\6.2.1\\rabbitmq.client.6.2.1.nupkg.sha512",
+    "C:\\Users\\Jennifer\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "C:\\Users\\Jennifer\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\Jennifer\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512",
     "C:\\Users\\Jennifer\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\Jennifer\\.nuget\\packages\\system.threading.channels\\4.7.1\\system.threading.channels.4.7.1.nupkg.sha512"
   ],

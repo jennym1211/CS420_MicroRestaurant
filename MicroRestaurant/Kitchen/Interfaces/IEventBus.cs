@@ -11,5 +11,7 @@ namespace Kitchen.Interfaces
         String HostName { get; set; }
 
         void PublishEvent<T>(String queueName, T e);
+
+        T ConsumeEvent<T>(string queueName);
     }
 }

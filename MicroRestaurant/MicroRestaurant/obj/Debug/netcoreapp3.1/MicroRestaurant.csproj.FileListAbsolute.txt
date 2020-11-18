@@ -16,3 +16,13 @@ E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaura
 E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\obj\Debug\netcoreapp3.1\MicroRestaurant.dll
 E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\obj\Debug\netcoreapp3.1\MicroRestaurant.pdb
 E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\obj\Debug\netcoreapp3.1\MicroRestaurant.genruntimeconfig.cache
+E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\bin\Debug\netcoreapp3.1\RabbitMQ.Client.dll
+E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\bin\Debug\netcoreapp3.1\System.Threading.Channels.dll
+E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\obj\Debug\netcoreapp3.1\MicroRestaurant.csproj.CopyComplete
+E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\obj\Debug\netcoreapp3.1\MicroRestaurant.csproj.CoreCompileInputs.cache
+E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\obj\Debug\netcoreapp3.1\MicroRestaurant.MvcApplicationPartsAssemblyInfo.cs
+E:\Jennifer\Documents\GitHub\CS420_MicroRestaurant\MicroRestaurant\MicroRestaurant\obj\Debug\netcoreapp3.1\MicroRestaurant.MvcApplicationPartsAssemblyInfo.cache

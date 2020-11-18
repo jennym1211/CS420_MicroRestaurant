@@ -27,49 +27,55 @@ namespace Waiter.Controllers
             eventBus.PortNumber = Convert.ToInt32(_configuration["rabbitmqport"]);
         }
 
-        public ActionResult CheckTable(int tableId)
+        //public ActionResult CheckTable(int tableId)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        [HttpGet("{id}")]
+        public ActionResult ReadyToPay(int id)
         {
-            throw new NotImplementedException();
+            var cpe = _eventBus.ConsumeEvent<CheckPaidEvent>("checkpaid");
+
+            return new JsonResult(cpe);
         }
 
-        public ActionResult PickUpOrder([FromBody] Order order, int orderId)
+        [HttpGet("{id}")]
+        public ActionResult PickUpFoodOrder(int id)
         {
-            OrderReadyEvent ore = new OrderReadyEvent
-            {
-                Order = order,
-                OrderId = orderId,
-                TimeStamp = DateTime.Now
-            };
-
-            _eventBus.PublishEvent<OrderReadyEvent>("orderready", ore);
+            var ore = _eventBus.ConsumeEvent<OrderReadyEvent>("orderready");
 
             return new JsonResult(ore);
         }
 
-        [HttpPost]
-        public ActionResult TakeOrder([FromBody] Order order, int orderId, IEnumerable<MenuItem> orderItems)
+        [HttpGet("{id}")]
+        public ActionResult PickUpDrinkOrder(int id)
         {
-            OrderTakenEvent ote = new OrderTakenEvent
-            {
-                Order = order,
-                OrderItems = orderItems,
-                OrderId = orderId,
-                TimeStamp = DateTime.Now
-            };
+            var dre = _eventBus.ConsumeEvent<DrinkReadyEvent>("drinkready");
 
-            _eventBus.PublishEvent<OrderTakenEvent>("ordertaken", ote);
-
-            return new JsonResult(ote);
+            return new JsonResult(dre);
         }
 
         [HttpPost]
-        public ActionResult TenderCheck(int customerId)
+        public ActionResult TakeOrder([FromBody] OrderTakenEvent ote)
         {
-            CheckPaidEvent cpe = new CheckPaidEvent();
+            //OrderItems = orderItems,
+            //OrderId = orderId,
+            ote.TimeStamp = DateTime.Now;
 
-            _eventBus.PublishEvent<CheckPaidEvent>("checktendered", cpe);
+            _eventBus.PublishEvent("ordertaken", ote);
+
+            return new JsonResult(ote);
+            throw new NotImplementedException();
+        }
+
+        [HttpPost]
+        public ActionResult TenderCheck([FromBody] CheckPaidEvent cpe)
+        {
+            _eventBus.PublishEvent("checktendered", cpe);
 
             return new JsonResult(cpe);
+            throw new NotImplementedException();
         }
     }
 }

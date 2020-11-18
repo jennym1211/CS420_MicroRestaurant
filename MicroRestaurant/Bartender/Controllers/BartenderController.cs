@@ -13,7 +13,7 @@ using Microsoft.Extensions.Configuration;
 namespace Bartender.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    //[ApiController]
     public class BartenderController : ControllerBase
     {
         IConfiguration _configuration;
@@ -27,29 +27,23 @@ namespace Bartender.Controllers
             eventBus.PortNumber = Convert.ToInt32(_configuration["rabbitmqport"]);
         }
 
-        public ActionResult PourDrink(int orderId)
+        [HttpGet]
+        public ActionResult GetOrder()
         {
-            DrinkReadyEvent dre = new DrinkReadyEvent
-            {
-            };
-            _eventBus.PublishEvent<DrinkReadyEvent>("drinkready", dre);
+            var ote = _eventBus.ConsumeEvent<OrderTakenEvent>("ordertaken");
 
-            return new JsonResult(dre);
+            return new JsonResult(ote);
         }
 
         [HttpPost]
-        public ActionResult TakeOrder([FromBody] Order order, int orderId, IEnumerable<MenuItem> orderItems)
+        public ActionResult TakeOrder([FromBody] OrderTakenEvent ote)
         {
-            OrderTakenEvent ote = new OrderTakenEvent
-            {
-                Order = order,
-                OrderItems = orderItems,
-                OrderId = orderId,
-                TimeStamp = DateTime.Now
-            };
+            //DrinkReadyEvent dre = new DrinkReadyEvent
+            //{
+            //};
+            _eventBus.PublishEvent("drinkready", ote);
 
-            _eventBus.PublishEvent<OrderTakenEvent>("ordertaken", ote);
-
+            //return new JsonResult(dre);
             return new JsonResult(ote);
         }
     }
