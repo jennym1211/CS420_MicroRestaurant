@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace Waiter.Events.ConsumeEvents
 {
-    public class ReadyToPayEvent
+    public class DrinkOrderReadyEvent
     {
         public int OrderNumber { get; set; }
-
-        public int TableNumber { get; set; }
+        public String Name { get; set; }
+        public bool Alcoholic { get; set; }
 
         public DateTime TimeStamp { get; set; }
     }

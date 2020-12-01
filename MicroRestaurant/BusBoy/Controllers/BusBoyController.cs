@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BusBoy.Events.ConsumeEvents;
 using BusBoy.Events.PublishEvents;
 using BusBoy.Interfaces;
 using MicroRestaurantDTO.Models;
@@ -39,6 +40,12 @@ namespace BusBoy.Controllers
             _eventBus.PublishEvent("tableready", tre);
 
             return new JsonResult(tre);
+        }
+
+        [HttpGet]
+        public ActionResult GetCheckPaid()
+        {
+            return new JsonResult(_eventBus.ConsumeEvent<CheckPaidEvent>("checkPaid"));
         }
     }
 }

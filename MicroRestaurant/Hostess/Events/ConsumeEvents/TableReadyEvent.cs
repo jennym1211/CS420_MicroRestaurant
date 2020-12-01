@@ -9,20 +9,16 @@ namespace Hostess.Events.ConsumeEvents
 {
     public class TableReadyEvent
     {
-        public Table Table { get; set; }
-
-        public Reservation Reservation { get; set; }
-
         public int TableId { get; set; }
 
         public int ReservationId { get; set; }
 
         public DateTime TimeStamp { get; set; }
 
-        public TableReadyEvent(List<int> TablesInUse, List<int> CurrentReservations)
-        {
-            TablesInUse.Add(TableId);
-            CurrentReservations.Remove(ReservationId);
-        }
+        //public TableReadyEvent(List<int> TablesInUse, List<int> CurrentReservations)
+        //{
+        //    TablesInUse.Add(TableId);
+        //    CurrentReservations.Remove(ReservationId);
+        //}
     }
 }

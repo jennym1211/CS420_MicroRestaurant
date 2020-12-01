@@ -9,8 +9,13 @@ namespace BusBoy.Events.PublishEvents
 {
     public class TableReadyEvent
     {
-        public Table Table { get; set; }
-        public int TableId { get; set; }
+        public int TableNumber { get; set; }
+        public int SeatCount { get; set; }
+
+        //public override string ToString()
+        //{
+        //    return "TableNumber;SeatCount;TimeStamp";
+        //}
 
         public DateTime TimeStamp { get; set; }
     }

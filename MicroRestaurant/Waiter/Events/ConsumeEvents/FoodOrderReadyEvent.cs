@@ -5,15 +5,12 @@ using System.Linq;
 using System.Security.Policy;
 using System.Threading.Tasks;
 
-namespace Waiter.Events.PublishEvents
+namespace Waiter.Events.ConsumeEvents
 {
-    public class OrderTakenEvent
+    public class FoodOrderReadyEvent
     {
-        public Order Order { get; set; }
-
-        public int OrderId { get; set; }
-
-        public IEnumerable<MenuItem> OrderItems { get; set; }
+        public int OrderNumber { get; set; }
+        public String Name { get; set; }
 
         public DateTime TimeStamp { get; set; }
     }

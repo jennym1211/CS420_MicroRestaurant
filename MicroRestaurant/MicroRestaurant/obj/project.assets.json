@@ -310,9 +310,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Jennifer\\Documents\\GitHub\\CS420_MicroRestaurant\\MicroRestaurant\\MicroRestaurant\\MicroRestaurant.csproj",
-      "projectName": "MicroRestaurant",
-      "projectPath": "E:\\Jennifer\\Documents\\GitHub\\CS420_MicroRestaurant\\MicroRestaurant\\MicroRestaurant\\MicroRestaurant.csproj",
+      "projectUniqueName": "E:\\Jennifer\\Documents\\GitHub\\CS420_MicroRestaurant\\MicroRestaurant\\MicroRestaurant\\MicroRestaurantOld.csproj",
+      "projectName": "MicroRestaurantOld",
+      "projectPath": "E:\\Jennifer\\Documents\\GitHub\\CS420_MicroRestaurant\\MicroRestaurant\\MicroRestaurant\\MicroRestaurantOld.csproj",
       "packagesPath": "C:\\Users\\Jennifer\\.nuget\\packages\\",
       "outputPath": "E:\\Jennifer\\Documents\\GitHub\\CS420_MicroRestaurant\\MicroRestaurant\\MicroRestaurant\\obj\\",
       "projectStyle": "PackageReference",
@@ -334,6 +334,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -345,6 +346,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
             "target": "Package",
@@ -385,7 +387,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

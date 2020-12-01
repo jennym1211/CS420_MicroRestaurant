@@ -12,7 +12,7 @@ using Waiter.Interfaces;
 
 namespace Waiter.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class WaiterController : ControllerBase
     {
@@ -32,50 +32,58 @@ namespace Waiter.Controllers
         //    throw new NotImplementedException();
         //}
 
-        [HttpGet("{id}")]
-        public ActionResult ReadyToPay(int id)
+        [HttpGet]
+        public ActionResult ReadyToPay()
         {
             var cpe = _eventBus.ConsumeEvent<CheckPaidEvent>("checkpaid");
 
             return new JsonResult(cpe);
         }
 
-        [HttpGet("{id}")]
-        public ActionResult PickUpFoodOrder(int id)
+        [HttpGet]
+        public ActionResult DrinkReady()
         {
-            var ore = _eventBus.ConsumeEvent<OrderReadyEvent>("orderready");
-
-            return new JsonResult(ore);
+            return new JsonResult(_eventBus.ConsumeEvent<FoodOrderReadyEvent>("foodReady"));
         }
 
-        [HttpGet("{id}")]
-        public ActionResult PickUpDrinkOrder(int id)
+        [HttpGet]
+        public ActionResult FoodReady()
         {
-            var dre = _eventBus.ConsumeEvent<DrinkReadyEvent>("drinkready");
-
-            return new JsonResult(dre);
+            return new JsonResult(_eventBus.ConsumeEvent<DrinkOrderReadyEvent>("drinkReady"));
         }
 
         [HttpPost]
-        public ActionResult TakeOrder([FromBody] OrderTakenEvent ote)
+        public ActionResult TakeDrinkOrder([FromBody] DrinkOrderTakenEvent dte)
+        {
+            //OrderItems = orderItems,
+            //OrderId = orderId,
+            dte.TimeStamp = DateTime.Now;
+
+            _eventBus.PublishEvent("foodordertaken", dte);
+
+            return new JsonResult(dte);
+        }
+
+        [HttpPost]
+        public ActionResult TakeFoodOrder([FromBody] FoodOrderTakenEvent ote)
         {
             //OrderItems = orderItems,
             //OrderId = orderId,
             ote.TimeStamp = DateTime.Now;
 
-            _eventBus.PublishEvent("ordertaken", ote);
+            _eventBus.PublishEvent("foodordertaken", ote);
 
             return new JsonResult(ote);
-            throw new NotImplementedException();
         }
 
         [HttpPost]
         public ActionResult TenderCheck([FromBody] CheckPaidEvent cpe)
         {
-            _eventBus.PublishEvent("checktendered", cpe);
+            cpe.TimeStamp = new DateTime();
+
+            _eventBus.PublishEvent<CheckPaidEvent>("checkPaid", cpe);
 
             return new JsonResult(cpe);
-            throw new NotImplementedException();
         }
     }
 }

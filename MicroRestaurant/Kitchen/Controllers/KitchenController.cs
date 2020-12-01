@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Kitchen.Events.ConsumeEvents;
 using Kitchen.Events.PublishEvents;
 using Kitchen.Interfaces;
 using Microsoft.AspNetCore.Http;
@@ -25,9 +26,16 @@ namespace Kitchen.Controllers
             eventBus.PortNumber = Convert.ToInt32(_configuration["rabbitmqport"]);
         }
 
-        public ActionResult CompleteOrder(int orderId)
+        [HttpGet]
+        public ActionResult GetOrder()
         {
-            OrderReadyEvent ore = new OrderReadyEvent();
+            return new JsonResult(_eventBus.ConsumeEvent<OrderTakenEvent>("foodOrder"));
+        }
+
+        [HttpPost]
+        public ActionResult CompleteOrder([FromBody] OrderReadyEvent ore)
+        {
+            ore.TimeStamp = DateTime.Now;
 
             _eventBus.PublishEvent<OrderReadyEvent>("drinkready", ore);
 

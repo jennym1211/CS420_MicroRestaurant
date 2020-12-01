@@ -46,5 +46,21 @@ namespace Bartender.Controllers
             //return new JsonResult(dre);
             return new JsonResult(ote);
         }
+
+        [HttpPost]
+        public ActionResult DrinkReady([FromBody] DrinkReadyEvent drinkReady)
+        {
+            drinkReady.TimeStamp = DateTime.Now;
+
+            _eventBus.PublishEvent("drinkReady", drinkReady);
+
+            return new JsonResult(drinkReady);
+        }
+
+        [HttpGet]
+        public ActionResult GetDrinkOrder()
+        {
+            return new JsonResult(_eventBus.ConsumeEvent<DrinkReadyEvent>("drinkOrder"));
+        }
     }
 }

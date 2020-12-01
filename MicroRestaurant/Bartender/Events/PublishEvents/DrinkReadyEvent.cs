@@ -8,6 +8,14 @@ namespace Bartender.Events.PublishEvents
 {
     public class DrinkReadyEvent
     {
-        public Order Order { get; set; }
+        public int TableNumber { get; set; }
+
+        public int OrderNumber { get; set; }
+
+        public String DrinkName { get; set; }
+
+        public bool Alcoholic { get; set; }
+
+        public DateTime TimeStamp { get; set; }
     }
 }
