@@ -1,5 +1,4 @@
-﻿using MicroRestaurantDTO.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -11,7 +10,7 @@ namespace Hostess.Events.ConsumeEvents
     {
         public int TableId { get; set; }
 
-        public int ReservationId { get; set; }
+        public int SeatCount { get; set; }
 
         public DateTime TimeStamp { get; set; }
 

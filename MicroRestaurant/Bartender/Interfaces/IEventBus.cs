@@ -12,6 +12,6 @@ namespace Bartender.Interfaces
 
         void PublishEvent<T>(String queueName, T e);
 
-        T ConsumeEvent<T>(String queueName);
+        string ConsumeEvent(String queueName);
     }
 }

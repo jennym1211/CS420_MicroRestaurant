@@ -5,19 +5,20 @@ using System.Threading.Tasks;
 using Hostess.Events.ConsumeEvents;
 using Hostess.Events.PublishEvents;
 using Hostess.Interfaces;
-using MicroRestaurantDTO.Models;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
-public static class queues
+public static class Queues
 {
     public const string seatedtable = "seatedtable";
+    public const string reservationfilled = "reservationfilled";
 }
 
 namespace Hostess.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     //[ApiController]
     public class HostessController : ControllerBase
     {
@@ -35,17 +36,13 @@ namespace Hostess.Controllers
         [HttpGet]
         public ActionResult TableReady()
         {
-            var tre = _eventBus.ConsumeEvent<TableReadyEvent>("tableready");
-
-            return new JsonResult(tre);
+            return new JsonResult(_eventBus.ConsumeEvent(Queues.seatedtable));
         }
 
         [HttpGet]
-        public ActionResult SeatedTable()
+        public ActionResult GetReservation()
         {
-            var ste = _eventBus.ConsumeEvent<SeatedTableEvent>("seatedtable");
-
-            return new JsonResult(ste);
+            return new JsonResult(_eventBus.ConsumeEvent(Queues.reservationfilled));
         }
 
         [HttpPost]
@@ -53,19 +50,19 @@ namespace Hostess.Controllers
         {
             ste.TimeStamp = DateTime.Now;
 
-            _eventBus.PublishEvent<SeatedTableEvent>(queues.seatedtable, ste);
+            _eventBus.PublishEvent<SeatedTableEvent>(Queues.seatedtable, ste);
 
             return new JsonResult(ste);
         }
 
         [HttpPost]
-        public ActionResult TakeReservation([FromBody] ReservationTakenEvent rte)
+        public ActionResult TakeReservation([FromBody] ReservationFilledEvent rfe)
         {
-            rte.TimeStamp = DateTime.Now;
+            rfe.TimeStamp = DateTime.Now;
 
-            _eventBus.PublishEvent<ReservationTakenEvent>("reservationtaken", rte);
+            _eventBus.PublishEvent<ReservationFilledEvent>(Queues.reservationfilled, rfe);
 
-            return new JsonResult(rte);
+            return new JsonResult(rfe);
         }
     }
 }

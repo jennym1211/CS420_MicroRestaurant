@@ -5,14 +5,14 @@ using System.Threading.Tasks;
 using Bartender.Events.ConsumeEvents;
 using Bartender.Events.PublishEvents;
 using Bartender.Interfaces;
-using MicroRestaurantDTO.Models;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
 namespace Bartender.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     //[ApiController]
     public class BartenderController : ControllerBase
     {
@@ -25,14 +25,6 @@ namespace Bartender.Controllers
             _configuration = configuration;
             eventBus.HostName = _configuration["rabbitmqhostname"];
             eventBus.PortNumber = Convert.ToInt32(_configuration["rabbitmqport"]);
-        }
-
-        [HttpGet]
-        public ActionResult GetOrder()
-        {
-            var ote = _eventBus.ConsumeEvent<OrderTakenEvent>("ordertaken");
-
-            return new JsonResult(ote);
         }
 
         [HttpPost]
@@ -58,9 +50,9 @@ namespace Bartender.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetDrinkOrder()
+        public ActionResult GetDrinkOrder()//
         {
-            return new JsonResult(_eventBus.ConsumeEvent<DrinkReadyEvent>("drinkOrder"));
+            return new JsonResult(_eventBus.ConsumeEvent("OrderTakenEvent"));
         }
     }
 }

@@ -11,7 +11,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Kitchen.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class KitchenController : ControllerBase
     {
@@ -29,7 +29,7 @@ namespace Kitchen.Controllers
         [HttpGet]
         public ActionResult GetOrder()
         {
-            return new JsonResult(_eventBus.ConsumeEvent<OrderTakenEvent>("foodOrder"));
+            return new JsonResult(_eventBus.ConsumeEvent("foodOrder"));
         }
 
         [HttpPost]
@@ -42,14 +42,14 @@ namespace Kitchen.Controllers
             return new JsonResult(ore);
         }
 
-        public ActionResult CookFood(int orderId)
-        {
-            throw new NotImplementedException();
-        }
+        //public ActionResult CookFood(int orderId)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
-        public ActionResult WashDishes(int plateId)
-        {
-            throw new NotImplementedException();
-        }
+        //public ActionResult WashDishes(int plateId)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

@@ -5,14 +5,14 @@ using System.Threading.Tasks;
 using BusBoy.Events.ConsumeEvents;
 using BusBoy.Events.PublishEvents;
 using BusBoy.Interfaces;
-using MicroRestaurantDTO.Models;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
 namespace BusBoy.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     //[ApiController]
     public class BusBoyController : ControllerBase
     {
@@ -27,12 +27,13 @@ namespace BusBoy.Controllers
             eventBus.PortNumber = Convert.ToInt32(_configuration["rabbitmqport"]);
         }
 
-        public ActionResult GatherPlates(int tableId)
-        {
-            throw new NotImplementedException();
-        }
+        //public ActionResult GatherPlates(int tableId)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
-        public ActionResult CleanTable([FromBody] TableReadyEvent tre)
+        [HttpPost]
+        public ActionResult CleanTable([FromBody] TableReadyEvent tre)//
         {
             tre.TimeStamp = DateTime.Now;
             //TablesInUse.Add(table);
@@ -45,7 +46,7 @@ namespace BusBoy.Controllers
         [HttpGet]
         public ActionResult GetCheckPaid()
         {
-            return new JsonResult(_eventBus.ConsumeEvent<CheckPaidEvent>("checkPaid"));
+            return new JsonResult(_eventBus.ConsumeEvent("checkPaid"));
         }
     }
 }

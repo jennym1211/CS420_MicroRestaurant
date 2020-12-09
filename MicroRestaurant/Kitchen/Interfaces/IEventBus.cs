@@ -12,6 +12,6 @@ namespace Kitchen.Interfaces
 
         void PublishEvent<T>(String queueName, T e);
 
-        T ConsumeEvent<T>(string queueName);
+        string ConsumeEvent(String queueName);
     }
 }

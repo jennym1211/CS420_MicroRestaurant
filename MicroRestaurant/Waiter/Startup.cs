@@ -27,6 +27,18 @@ namespace Waiter
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                    });
+            });
+
             services.AddControllers();
 
             services.AddTransient<IEventBus, RabbitMQEventBus>();
@@ -55,6 +67,8 @@ namespace Waiter
 
             app.UseRouting();
 
+            app.UseCors();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -67,6 +81,13 @@ namespace Waiter
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Waiter/Waitresses");
             });
+
+            ConfigureEventBus(app);
+        }
+
+        private void ConfigureEventBus(IApplicationBuilder app)
+        {
+            var eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();
         }
     }
 }

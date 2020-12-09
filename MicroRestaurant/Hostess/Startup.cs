@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Hostess.Implementation;
 using Hostess.Interfaces;
 using Microsoft.AspNetCore.Builder;
@@ -12,6 +8,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Hostess
 {
@@ -28,7 +28,6 @@ namespace Hostess
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
             services.AddTransient<IEventBus, RabbitMQEventBus>();
 
             services.AddSwaggerGen(c =>
@@ -66,6 +65,12 @@ namespace Hostess
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Host/Hostesses");
             });
+            ConfigureEventBus(app);
+        }
+
+        private void ConfigureEventBus(IApplicationBuilder app)
+        {
+            var eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();
         }
     }
 }

@@ -3,10 +3,10 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>7fafaabd-abaa-40d4-9800-37766474c5bf</ProjectGuid>
+    <ProjectGuid>3ce029b8-5139-40bf-bef8-df380ec14e2e</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
-    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}</DockerServiceUrl>
-    <DockerServiceName>microrestaurant</DockerServiceName>
+    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/bartender</DockerServiceUrl>
+    <DockerServiceName>bartender</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">

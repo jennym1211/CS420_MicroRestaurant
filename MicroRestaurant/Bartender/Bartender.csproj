@@ -4,6 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>bbd7b281-06c1-43d4-8a65-23de627eeb55</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    <DockerfileContext>..\MicroRestaurant</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,10 +15,4 @@
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.6.3" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="5.6.3" />
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\MicroRestaurantDTO\MicroRestaurantDTO.csproj" />
-  </ItemGroup>
-
-
 </Project>

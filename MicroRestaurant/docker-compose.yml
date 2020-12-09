@@ -1,34 +1,37 @@
 version: '3.4'
 
 services:
-  microrestaurant:
-    image: ${DOCKER_REGISTRY-}microrestaurantmvc
-    build:
-      context: .
-      dockerfile: MicroRestaurantMVC/Dockerfile
   bartender:
     image: ${DOCKER_REGISTRY-}bartender
     build:
       context: .
       dockerfile: Bartender/Dockerfile
+    ports:
+      - 53676:443
 
   busboy:
     image: ${DOCKER_REGISTRY-}busboy
     build:
       context: .
       dockerfile: BusBoy/Dockerfile
+    ports:
+      - 53841:443
 
   kitchen:
     image: ${DOCKER_REGISTRY-}kitchen
     build:
       context: .
       dockerfile: Kitchen/Dockerfile
+    ports:
+      - 53876:443
 
   hostess:
     image: ${DOCKER_REGISTRY-}hostess
     build:
       context: .
       dockerfile: Hostess/Dockerfile
+    ports:
+      - 53874:443
 
   waiter:
     image: ${DOCKER_REGISTRY-}waiter
@@ -36,4 +39,4 @@ services:
       context: .
       dockerfile: Waiter/Dockerfile
     ports:
-      - 36771:443
+      - 36772:443

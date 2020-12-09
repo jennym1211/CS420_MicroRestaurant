@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MicroRestaurantDTO.Models;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -32,38 +32,6 @@ namespace Waiter.Controllers
         //    throw new NotImplementedException();
         //}
 
-        [HttpGet]
-        public ActionResult ReadyToPay()
-        {
-            var cpe = _eventBus.ConsumeEvent<CheckPaidEvent>("checkpaid");
-
-            return new JsonResult(cpe);
-        }
-
-        [HttpGet]
-        public ActionResult DrinkReady()
-        {
-            return new JsonResult(_eventBus.ConsumeEvent<FoodOrderReadyEvent>("foodReady"));
-        }
-
-        [HttpGet]
-        public ActionResult FoodReady()
-        {
-            return new JsonResult(_eventBus.ConsumeEvent<DrinkOrderReadyEvent>("drinkReady"));
-        }
-
-        [HttpPost]
-        public ActionResult TakeDrinkOrder([FromBody] DrinkOrderTakenEvent dte)
-        {
-            //OrderItems = orderItems,
-            //OrderId = orderId,
-            dte.TimeStamp = DateTime.Now;
-
-            _eventBus.PublishEvent("foodordertaken", dte);
-
-            return new JsonResult(dte);
-        }
-
         [HttpPost]
         public ActionResult TakeFoodOrder([FromBody] FoodOrderTakenEvent ote)
         {
@@ -71,7 +39,7 @@ namespace Waiter.Controllers
             //OrderId = orderId,
             ote.TimeStamp = DateTime.Now;
 
-            _eventBus.PublishEvent("foodordertaken", ote);
+            _eventBus.PublishEvent<FoodOrderTakenEvent>("foodordertaken", ote);
 
             return new JsonResult(ote);
         }
@@ -84,6 +52,38 @@ namespace Waiter.Controllers
             _eventBus.PublishEvent<CheckPaidEvent>("checkPaid", cpe);
 
             return new JsonResult(cpe);
+        }
+
+        [HttpPost]
+        public ActionResult TakeDrinkOrder([FromBody] DrinkOrderTakenEvent dte)
+        {
+            //OrderItems = orderItems,
+            //OrderId = orderId,
+            dte.TimeStamp = DateTime.Now;
+
+            _eventBus.PublishEvent("drinkordertaken", dte);
+
+            return new JsonResult(dte);
+        }
+
+        [HttpGet]
+        public ActionResult ReadyToPay()
+        {
+            var cpe = _eventBus.ConsumeEvent("ReadyToPayEvent");
+
+            return new JsonResult(cpe);
+        }
+
+        [HttpGet]
+        public ActionResult DrinkReady()
+        {
+            return new JsonResult(_eventBus.ConsumeEvent("DrinkOrderReadyEvent"));
+        }
+
+        [HttpGet]
+        public ActionResult FoodReady()
+        {
+            return new JsonResult(_eventBus.ConsumeEvent("FoodOrderReadyEvent"));
         }
     }
 }

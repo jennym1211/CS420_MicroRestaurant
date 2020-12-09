@@ -1,5 +1,4 @@
-﻿using MicroRestaurantDTO.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,11 +7,13 @@ namespace Bartender.Events.ConsumeEvents
 {
     public class OrderTakenEvent
     {
-        public Order Order { get; set; }
+        public int TableNumber { get; set; }
 
-        public int OrderId { get; set; }
+        public int OrderNumber { get; set; }
 
-        public IEnumerable<MenuItem> OrderItems { get; set; }
+        public int DrinkName { get; set; }
+
+        public bool Alcoholic { get; set; }
 
         public DateTime TimeStamp { get; set; }
     }

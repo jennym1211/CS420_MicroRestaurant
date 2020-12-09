@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroRestaurantFrontEnd", "MicroRestaurantFrontEnd\MicroRestaurantFrontEnd.csproj", "{5C01F911-2163-4FF0-A5A9-18F4C0E1E6C1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroRestaurantDTO", "..\MicroRestaurant\MicroRestaurantDTO\MicroRestaurantDTO.csproj", "{6F87FBAE-7839-40DD-9C4D-054286ED97D0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C01F911-2163-4FF0-A5A9-18F4C0E1E6C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C01F911-2163-4FF0-A5A9-18F4C0E1E6C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C01F911-2163-4FF0-A5A9-18F4C0E1E6C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C01F911-2163-4FF0-A5A9-18F4C0E1E6C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F87FBAE-7839-40DD-9C4D-054286ED97D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F87FBAE-7839-40DD-9C4D-054286ED97D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F87FBAE-7839-40DD-9C4D-054286ED97D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F87FBAE-7839-40DD-9C4D-054286ED97D0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {92E6F6F7-F473-4469-8820-DA45EC50BD69}
+	EndGlobalSection
+EndGlobal
