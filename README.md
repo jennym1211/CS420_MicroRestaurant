@@ -1,4 +1,4 @@
-# CS420 Restaurant with Microservices in ASP.NET Core
+# CS420 Final Project - Restaurant with Microservices in ASP.NET Core
 
 By: Jennifer Mackey
 <br>
