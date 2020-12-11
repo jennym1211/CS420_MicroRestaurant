@@ -7,17 +7,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["Bartender/Bartender.csproj", "Bartender/"]
-COPY ["../MicroRestaurantDTO/MicroRestaurantDTO.csproj", "../MicroRestaurantDTO/"]
-RUN dotnet restore "Bartender/Bartender.csproj"
+COPY ["MicroRestaurant/MicroRestaurant.csproj", "MicroRestaurant/"]
+RUN dotnet restore "MicroRestaurant/MicroRestaurant.csproj"
 COPY . .
-WORKDIR "/src/Bartender"
-RUN dotnet build "Bartender.csproj" -c Release -o /app/build
+WORKDIR "/src/MicroRestaurant"
+RUN dotnet build "MicroRestaurant.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Bartender.csproj" -c Release -o /app/publish
+RUN dotnet publish "MicroRestaurant.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Bartender.dll"]
+ENTRYPOINT ["dotnet", "MicroRestaurant.dll"]

@@ -29,7 +29,7 @@ namespace Kitchen.Controllers
         [HttpGet]
         public ActionResult GetOrder()
         {
-            return new JsonResult(_eventBus.ConsumeEvent("foodOrder"));
+            return new JsonResult(_eventBus.ConsumeEvent("FoodOrderTaken"));
         }
 
         [HttpPost]
@@ -37,7 +37,7 @@ namespace Kitchen.Controllers
         {
             ore.TimeStamp = DateTime.Now;
 
-            _eventBus.PublishEvent<OrderReadyEvent>("drinkready", ore);
+            _eventBus.PublishEvent<OrderReadyEvent>("FoodOrderReady", ore);
 
             return new JsonResult(ore);
         }

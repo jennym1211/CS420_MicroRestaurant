@@ -10,12 +10,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
-public static class Queues
-{
-    public const string seatedtable = "seatedtable";
-    public const string reservationfilled = "reservationfilled";
-}
-
 namespace Hostess.Controllers
 {
     [Route("api/[controller]/[action]")]
@@ -36,13 +30,13 @@ namespace Hostess.Controllers
         [HttpGet]
         public ActionResult TableReady()
         {
-            return new JsonResult(_eventBus.ConsumeEvent(Queues.seatedtable));
+            return new JsonResult(_eventBus.ConsumeEvent("TableReady"));
         }
 
         [HttpGet]
         public ActionResult GetReservation()
         {
-            return new JsonResult(_eventBus.ConsumeEvent(Queues.reservationfilled));
+            return new JsonResult(_eventBus.ConsumeEvent("FillReservation"));
         }
 
         [HttpPost]
@@ -50,7 +44,7 @@ namespace Hostess.Controllers
         {
             ste.TimeStamp = DateTime.Now;
 
-            _eventBus.PublishEvent<SeatedTableEvent>(Queues.seatedtable, ste);
+            _eventBus.PublishEvent<SeatedTableEvent>("GetSeatedTable", ste);
 
             return new JsonResult(ste);
         }
@@ -60,7 +54,7 @@ namespace Hostess.Controllers
         {
             rfe.TimeStamp = DateTime.Now;
 
-            _eventBus.PublishEvent<ReservationFilledEvent>(Queues.reservationfilled, rfe);
+            _eventBus.PublishEvent<ReservationFilledEvent>("FillReservation", rfe);
 
             return new JsonResult(rfe);
         }

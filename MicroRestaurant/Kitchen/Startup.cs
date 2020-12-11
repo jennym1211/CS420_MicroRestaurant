@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Kitchen.Implementation;
 using Kitchen.Interfaces;
 using Microsoft.AspNetCore.Builder;
@@ -12,6 +8,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Kitchen
 {
@@ -38,18 +38,18 @@ namespace Kitchen
                         .AllowAnyHeader();
                     });
             });
+
             services.AddControllers();
 
             services.AddTransient<IEventBus, RabbitMQEventBus>();
 
             services.AddSwaggerGen(c =>
             {
-                //c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
                 c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
                 {
                     Version = "v1",
                     Title = "Kitchen",
-                    Description = "The section for kitchens."
+                    Description = "The API for the Kitchen",
                 });
             });
         }
@@ -65,7 +65,6 @@ namespace Kitchen
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
             app.UseCors();
 
             app.UseAuthorization();
@@ -80,6 +79,7 @@ namespace Kitchen
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Kitchen");
             });
+
             ConfigureEventBus(app);
         }
 

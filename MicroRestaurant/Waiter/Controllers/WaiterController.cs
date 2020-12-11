@@ -39,7 +39,7 @@ namespace Waiter.Controllers
             //OrderId = orderId,
             ote.TimeStamp = DateTime.Now;
 
-            _eventBus.PublishEvent<FoodOrderTakenEvent>("foodordertaken", ote);
+            _eventBus.PublishEvent<FoodOrderTakenEvent>("FoodOrderTaken", ote);
 
             return new JsonResult(ote);
         }
@@ -49,7 +49,7 @@ namespace Waiter.Controllers
         {
             cpe.TimeStamp = new DateTime();
 
-            _eventBus.PublishEvent<CheckPaidEvent>("checkPaid", cpe);
+            _eventBus.PublishEvent<CheckPaidEvent>("GetCheckPaid", cpe);
 
             return new JsonResult(cpe);
         }
@@ -61,15 +61,21 @@ namespace Waiter.Controllers
             //OrderId = orderId,
             dte.TimeStamp = DateTime.Now;
 
-            _eventBus.PublishEvent("drinkordertaken", dte);
+            _eventBus.PublishEvent("DrinkOrderTaken", dte);
 
             return new JsonResult(dte);
         }
 
         [HttpGet]
+        public ActionResult TableSeated()
+        {
+            return new JsonResult(_eventBus.ConsumeEvent("GetSeatedTable"));
+        }
+
+        [HttpGet]
         public ActionResult ReadyToPay()
         {
-            var cpe = _eventBus.ConsumeEvent("ReadyToPayEvent");
+            var cpe = _eventBus.ConsumeEvent("ReadyToPay");
 
             return new JsonResult(cpe);
         }
@@ -77,13 +83,13 @@ namespace Waiter.Controllers
         [HttpGet]
         public ActionResult DrinkReady()
         {
-            return new JsonResult(_eventBus.ConsumeEvent("DrinkOrderReadyEvent"));
+            return new JsonResult(_eventBus.ConsumeEvent("DrinkOrderReady"));
         }
 
         [HttpGet]
         public ActionResult FoodReady()
         {
-            return new JsonResult(_eventBus.ConsumeEvent("FoodOrderReadyEvent"));
+            return new JsonResult(_eventBus.ConsumeEvent("FoodOrderReady"));
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,8 +16,9 @@ namespace MicroRestaurantFrontEnd
         static void Main()
         {
             Application.EnableVisualStyles();
+            ServicePointManager.ServerCertificateValidationCallback += (o, c, ch, er) => true;
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Waiter());
+            Application.Run(new Main());
         }
     }
 }

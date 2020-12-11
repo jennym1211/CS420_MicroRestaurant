@@ -27,7 +27,20 @@ namespace Hostess
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                    });
+            });
+
             services.AddControllers();
+
             services.AddTransient<IEventBus, RabbitMQEventBus>();
 
             services.AddSwaggerGen(c =>
@@ -35,8 +48,8 @@ namespace Hostess
                 c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "Host/Hostesses",
-                    Description = "The location for the host and hostesses.",
+                    Title = "Hostess",
+                    Description = "The API for the Hostess",
                 });
             });
         }
@@ -52,6 +65,7 @@ namespace Hostess
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors();
 
             app.UseAuthorization();
 
@@ -63,8 +77,9 @@ namespace Hostess
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Host/Hostesses");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Hostess");
             });
+
             ConfigureEventBus(app);
         }
 

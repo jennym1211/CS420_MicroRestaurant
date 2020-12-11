@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,6 +6,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Waiter.Implementation;
 using Waiter.Interfaces;
 
@@ -45,12 +45,11 @@ namespace Waiter
 
             services.AddSwaggerGen(c =>
             {
-                //c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
                 c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "Waiters",
-                    Description = "The section for waiters."
+                    Title = "Waiter",
+                    Description = "The API for the Waiter",
                 });
             });
         }
@@ -66,7 +65,6 @@ namespace Waiter
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
             app.UseCors();
 
             app.UseAuthorization();
@@ -79,7 +77,7 @@ namespace Waiter
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Waiter/Waitresses");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Waiter");
             });
 
             ConfigureEventBus(app);

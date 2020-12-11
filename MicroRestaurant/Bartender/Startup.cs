@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Bartender.Implementation;
 using Bartender.Interfaces;
 using Microsoft.AspNetCore.Builder;
@@ -12,6 +8,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Bartender
 {
@@ -38,7 +38,6 @@ namespace Bartender
                         .AllowAnyHeader();
                     });
             });
-            services.AddControllers();
 
             services.AddTransient<IEventBus, RabbitMQEventBus>();
 
@@ -47,10 +46,12 @@ namespace Bartender
                 c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "Bartender",
-                    Description = "The section for bartenders."
+                    Title = "Bartenders",
+                    Description = "Bartenders",
                 });
             });
+
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,7 +65,9 @@ namespace Bartender
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
             app.UseCors();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

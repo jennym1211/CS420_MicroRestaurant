@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using BusBoy.Implementation;
 using BusBoy.Interfaces;
 using Microsoft.AspNetCore.Builder;
@@ -12,6 +8,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace BusBoy
 {
@@ -49,7 +49,7 @@ namespace BusBoy
                 {
                     Version = "v1",
                     Title = "Busboy",
-                    Description = "The location for the busboys.",
+                    Description = "The API for the Busboy",
                 });
             });
         }
@@ -57,11 +57,6 @@ namespace BusBoy
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
             app.UseHttpsRedirection();
 
             app.UseRouting();

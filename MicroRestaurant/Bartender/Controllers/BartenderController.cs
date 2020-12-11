@@ -28,31 +28,19 @@ namespace Bartender.Controllers
         }
 
         [HttpPost]
-        public ActionResult TakeOrder([FromBody] OrderTakenEvent ote)
+        public ActionResult DrinkReady([FromBody] DrinkReadyEvent dre)
         {
-            //DrinkReadyEvent dre = new DrinkReadyEvent
-            //{
-            //};
-            _eventBus.PublishEvent("drinkready", ote);
+            dre.TimeStamp = DateTime.Now;
 
-            //return new JsonResult(dre);
-            return new JsonResult(ote);
-        }
+            _eventBus.PublishEvent("DrinkOrderReady", dre);
 
-        [HttpPost]
-        public ActionResult DrinkReady([FromBody] DrinkReadyEvent drinkReady)
-        {
-            drinkReady.TimeStamp = DateTime.Now;
-
-            _eventBus.PublishEvent("drinkReady", drinkReady);
-
-            return new JsonResult(drinkReady);
+            return new JsonResult(dre);
         }
 
         [HttpGet]
         public ActionResult GetDrinkOrder()//
         {
-            return new JsonResult(_eventBus.ConsumeEvent("OrderTakenEvent"));
+            return new JsonResult(_eventBus.ConsumeEvent("DrinkOrderTaken"));
         }
     }
 }

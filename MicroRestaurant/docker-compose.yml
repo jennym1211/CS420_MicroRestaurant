@@ -7,7 +7,8 @@ services:
       context: .
       dockerfile: Bartender/Dockerfile
     ports:
-      - 53676:443
+     - 49210:80
+     - 49209:443
 
   busboy:
     image: ${DOCKER_REGISTRY-}busboy
@@ -15,7 +16,8 @@ services:
       context: .
       dockerfile: BusBoy/Dockerfile
     ports:
-      - 53841:443
+     - 49177:443
+
 
   kitchen:
     image: ${DOCKER_REGISTRY-}kitchen
@@ -23,7 +25,8 @@ services:
       context: .
       dockerfile: Kitchen/Dockerfile
     ports:
-      - 53876:443
+     - 49175:443
+
 
   hostess:
     image: ${DOCKER_REGISTRY-}hostess
@@ -31,7 +34,8 @@ services:
       context: .
       dockerfile: Hostess/Dockerfile
     ports:
-      - 53874:443
+     - 49173:443
+
 
   waiter:
     image: ${DOCKER_REGISTRY-}waiter
@@ -39,4 +43,5 @@ services:
       context: .
       dockerfile: Waiter/Dockerfile
     ports:
-      - 36772:443
+     - 49180:443
+

@@ -27,18 +27,13 @@ namespace BusBoy.Controllers
             eventBus.PortNumber = Convert.ToInt32(_configuration["rabbitmqport"]);
         }
 
-        //public ActionResult GatherPlates(int tableId)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
         [HttpPost]
-        public ActionResult CleanTable([FromBody] TableReadyEvent tre)//
+        public ActionResult CleanTable([FromBody] TableReadyEvent tre)
         {
             tre.TimeStamp = DateTime.Now;
             //TablesInUse.Add(table);
 
-            _eventBus.PublishEvent("tableready", tre);
+            _eventBus.PublishEvent("TableReady", tre);
 
             return new JsonResult(tre);
         }
@@ -46,7 +41,7 @@ namespace BusBoy.Controllers
         [HttpGet]
         public ActionResult GetCheckPaid()
         {
-            return new JsonResult(_eventBus.ConsumeEvent("checkPaid"));
+            return new JsonResult(_eventBus.ConsumeEvent("GetCheckPaid"));
         }
     }
 }
